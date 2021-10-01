@@ -1,0 +1,45 @@
+﻿@model  EstateSiteProject.Models.EntityFramework.Login
+
+@{
+    ViewBag.Title = "AdminFormYeni";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Ekleme Formu</h2>
+
+@using (Html.BeginForm("Kaydet", "AdminHome", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(log => log.loginAd)
+        @Html.TextBoxFor(log => log.loginAd, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(log => log.loginSoyad)
+        @Html.TextBoxFor(log => log.loginSoyad, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(log => log.loginEmail)
+        @Html.TextBoxFor(log => log.loginEmail, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(log => log.loginSifre)
+        @Html.TextBoxFor(log => log.loginSifre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(log => log.Rol)
+        @Html.TextBoxFor(log => log.Rol, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(log => log.telefonNo)
+        @Html.TextBoxFor(log => log.telefonNo, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(log => log.loginId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+

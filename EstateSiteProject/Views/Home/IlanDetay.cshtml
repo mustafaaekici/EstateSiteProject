@@ -1,0 +1,179 @@
+﻿@model ViewModel
+
+@{
+    ViewBag.Title = "IlanDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/fav-css.css" rel="stylesheet" />
+<style>
+    #fav:hover{
+        background-color:tomato;
+    }
+</style>
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    @foreach (var item in Model.Ilan)
+                    {
+                        <h1 class="title-single">@item.ilanBaslik</h1>
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            İlanDetay
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="about-img-box">
+                    @foreach (var item in Model.Ilan)
+                    {
+                        <img src="@item.ilanResim" alt="" class="img-fluid" style="width:950px; height:600px;">
+                    }
+
+                </div>
+                <div class="sinse-box">
+                    <h3 class="sinse-title">
+                        EKICIEMLAK
+                        <span></span>
+                    </h3>
+                    <p>Satılık &amp; Kiralık Daireler</p>
+                </div>
+         
+                <div style="margin-left:900px; margin-top:0px">
+                    <br /><br />
+                    @if (User.IsInRole("Musteri"))
+                    {
+                        <a class="btn btn-light" id="fav" href="/Favori/FavoriEkle/@Model.Ilan.ElementAt(0).ilanId" role="button"><i class="fa fa-heart-o"></i>Favori</a>
+                    }
+                </div>
+               
+                </div>
+            <div class="col-md-12 section-t8">
+                <div class="row">
+                    <div class="col-md-6 col-lg-5">
+                        <table class="table table-striped">
+                            <tbody>
+                                @foreach (var item in Model.Ilan)
+                                {
+                                    <tr>
+                                        <th scope="row">İlan Fiyatı</th>
+                                        <td>@item.ilanFiyat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">İlan Tarihi</th>
+                                        <td>@item.ilanTarih.Value.ToString("dd.MM.yyyy")</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">İlan Açıklaması</th>
+                                        <td>@item.ilanAciklama</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">İlan Konumu</th>
+                                        <td>@item.Konum.konumAd @item.Konum.ilceAdi/@item.Konum.ilAdi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">İlan Kategorisi</th>
+                                        <td>@item.Kategori.kategoriAd</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Oda | Salon Sayısı</th>
+                                        <td>@item.IlanDetay.odaSayisi + @item.IlanDetay.salonSayisi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Kaç Katlı</th>
+                                        <td>@item.IlanDetay.katSayisi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Bulunduğu Kat</th>
+                                        <td>@item.IlanDetay.bulunduguKat</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Brüt M2</th>
+                                        <td>@item.IlanDetay.metreKare</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Isınma Tipi</th>
+                                        <td>@item.IlanDetay.isinmaTipi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Bina Yaşı</th>
+                                        <td>@item.IlanDetay.binaYasi</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Banyo Sayısı</th>
+                                        <td>@item.IlanDetay.banyoSayisi</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Eşyalı mı</th>
+                                        <td>@(item.IlanDetay.esyaDurumu == true ? "Eşyalı" : "Eşyasız") </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-2  d-none d-lg-block">
+                        <div class="title-vertical d-flex justify-content-start">
+                            <span>EkiciEmlak</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-5 section-md-t3">
+                        <div class="title-box-d">
+                            <h3 class="title-d">
+                                İlan
+                                <span class="color-d">Detaylı</span> Açıklama
+                                <br>
+                            </h3>
+                        </div>
+                        @foreach (var item in Model.Ilan)
+                        {
+                            <p class="color-text-a">
+                                @item.IlanDetay.detayAciklama
+                            </p>
+                            <div class="title-box-d">
+                                <h3 class="title-d">
+                                    Satıcı :
+                                    <span class="color-d"> @item.Login.loginAd @item.Login.loginSoyad</span>
+                                    <br>
+                                    Mail :
+                                    <span class="color-d">@item.Login.loginEmail</span>
+                                    <br>
+                                    Telefon :
+                                    <span class="color-d"> @item.Login.telefonNo</span>
+                                </h3>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+﻿@model EstateSiteProject.Models.EntityFramework.siteGenel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "SiteGenel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(i => i.sirketFacebook)
+        @Html.TextBoxFor(i => i.sirketFacebook, new { @class = "form-control" })
+    </div>
+     
+    <div class="form-group">
+        @Html.LabelFor(i => i.sirketInstagram)
+        @Html.TextBoxFor(i => i.sirketInstagram, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.sirketAdres)
+        @Html.TextBoxFor(i => i.sirketAdres, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.sirketTelNo)
+        @Html.TextBoxFor(i => i.sirketTelNo, new { @class = "form-control" })
+    </div>
+
+    <br />
+    @Html.HiddenFor(i => i.siteGenelId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}

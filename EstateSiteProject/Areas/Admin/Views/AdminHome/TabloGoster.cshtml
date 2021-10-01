@@ -1,0 +1,60 @@
+﻿@using EstateSiteProject.Models.EntityFramework
+@model List<Login>
+
+@{
+    ViewBag.Title = "saticiGoster";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a class="form-control btn btn-success" href="/Admin/AdminHome/Yeni">Ekle</a>
+<hr>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tablolarım</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Kullanıcılarım Tablosu</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable table-dark" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 61px;">İsim</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Soyisim</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Mail Adresi</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 68px;"><i class="fa fa-fw fa-edit"></i>Güncelle</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;"><i class="fa fa-fw fa-trash"></i>Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var saticilar in Model)
+                                    {
+                                        <tr class="odd">
+                                            <td>@saticilar.loginAd</td>
+                                            <td>@saticilar.loginSoyad</td>
+                                            <td>@saticilar.loginEmail</td>
+                                            <td>@Html.ActionLink("Güncelle", "Guncelle", new { id = saticilar.loginId }, new { @class = "btn btn-success" })</td>
+                                            <td>@Html.ActionLink("Sil", "Sil", new { id = saticilar.loginId }, new { @class = "btn btn-danger" })</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

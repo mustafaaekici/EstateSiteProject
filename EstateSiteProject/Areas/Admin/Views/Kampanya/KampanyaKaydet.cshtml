@@ -1,0 +1,22 @@
+﻿@model EstateSiteProject.Models.EntityFramework.Kampanya
+
+@{
+    ViewBag.Title = "KampanyaKaydet";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("KampanyaKaydet", "Kampanya", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(k => k.kampanyaAd)
+        @Html.TextBoxFor(k => k.kampanyaAd, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="file" name="kampanyaResim" />
+    </div>
+    <br />
+    @Html.HiddenFor(k => k.kampanyaId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}

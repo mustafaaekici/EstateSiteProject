@@ -1,0 +1,45 @@
+﻿@model EstateSiteProject.Models.EntityFramework.Login
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+@using (Html.BeginForm("Save", "Bilgiler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(l => l.loginAd)
+        @Html.TextBoxFor(l => l.loginAd, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(l => l.loginSoyad)
+        @Html.TextBoxFor(l => l.loginSoyad, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(l => l.loginEmail)
+        @Html.TextBoxFor(l => l.loginEmail, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(l => l.loginSifre)
+        @Html.TextBoxFor(l => l.loginSifre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(l => l.telefonNo)
+        @Html.TextBoxFor(l => l.telefonNo, new { @class = "form-control" })
+    </div>
+
+    <br />
+    @Html.HiddenFor(l => l.loginId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+
+    <br />
+    <br />
+}

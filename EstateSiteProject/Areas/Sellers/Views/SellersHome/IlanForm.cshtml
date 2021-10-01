@@ -1,0 +1,108 @@
+﻿@model EstateSiteProject.Areas.Sellers.ViewModels.IlanFormViewModel
+
+@{
+    ViewBag.Title = "IlanForm";
+    Layout = "~/Areas/Sellers/Views/Shared/_SelleryLayout.cshtml";
+}
+
+<h2>Ilan Ekleme Formu</h2>
+
+@using (Html.BeginForm("Kaydet", "SellersHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.ilanBaslik)
+        @Html.TextBoxFor(i => i.ilan.ilanBaslik, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group"> 
+        @Html.LabelFor(i => i.ilan.ilanFiyat)
+        @Html.TextBoxFor(i => i.ilan.ilanFiyat, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.ilanTarih)
+        @Html.TextBoxFor(i => i.ilan.ilanTarih, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <p>İlan Resim</p>
+        <input type="file" name="ilanResim" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.ilanAciklama)
+        @Html.TextAreaFor(i => i.ilan.ilanAciklama, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.KategoriId)
+        @Html.DropDownListFor(i => i.ilan.KategoriId, new SelectList(Model.Kategoris, "kategoriId", "kategoriAd"), "Kategori Seçiniz...", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.satisTipiId)
+        @Html.DropDownListFor(i => i.ilan.satisTipiId, new SelectList(Model.SatisTipis, "satisTipiId", "stisTipiAd"), "Satış Tipi Seçiniz...", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.Konum.konumAd)
+        @Html.TextBoxFor(i => i.ilan.Konum.konumAd, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.Konum.ilAdi)
+        @Html.TextBoxFor(i => i.ilan.Konum.ilAdi, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.Konum.ilceAdi)
+        @Html.TextBoxFor(i => i.ilan.Konum.ilceAdi, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.odaSayisi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.odaSayisi, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.katSayisi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.katSayisi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.binaYasi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.binaYasi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.bulunduguKat)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.bulunduguKat, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.salonSayisi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.salonSayisi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.banyoSayisi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.banyoSayisi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.isinmaTipi)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.isinmaTipi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.esyaDurumu)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.esyaDurumu, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.detayAciklama)
+        @Html.TextAreaFor(i => i.ilan.IlanDetay.detayAciklama, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(i => i.ilan.IlanDetay.metreKare)
+        @Html.TextBoxFor(i => i.ilan.IlanDetay.metreKare, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(i => i.ilan.ilanId)
+    @Html.HiddenFor(i => i.ilan.DetayId)
+    <button type="submit" class="btn btn-success">İlan Ekle</button>
+}
+
